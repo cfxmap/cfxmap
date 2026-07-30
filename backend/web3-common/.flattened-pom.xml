@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.dromara</groupId>
+    <artifactId>web3-vue-plus</artifactId>
+    <version>5.6.0</version>
+  </parent>
+  <groupId>org.dromara</groupId>
+  <artifactId>web3-common</artifactId>
+  <version>5.6.0</version>
+  <packaging>pom</packaging>
+  <description>common 通用模块</description>
+  <modules>
+    <module>web3-common-bom</module>
+    <module>web3-common-social</module>
+    <module>web3-common-core</module>
+    <module>web3-common-doc</module>
+    <module>web3-common-excel</module>
+    <module>web3-common-idempotent</module>
+    <module>web3-common-job</module>
+    <module>web3-common-log</module>
+    <module>web3-common-mail</module>
+    <module>web3-common-mybatis</module>
+    <module>web3-common-oss</module>
+    <module>web3-common-ratelimiter</module>
+    <module>web3-common-redis</module>
+    <module>web3-common-satoken</module>
+    <module>web3-common-security</module>
+    <module>web3-common-sms</module>
+    <module>web3-common-web</module>
+    <module>web3-common-translation</module>
+    <module>web3-common-sensitive</module>
+    <module>web3-common-json</module>
+    <module>web3-common-encrypt</module>
+    <module>web3-common-tenant</module>
+    <module>web3-common-websocket</module>
+    <module>web3-common-sse</module>
+  </modules>
+</project>

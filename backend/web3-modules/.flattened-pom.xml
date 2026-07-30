@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.dromara</groupId>
+    <artifactId>web3-vue-plus</artifactId>
+    <version>5.6.0</version>
+  </parent>
+  <groupId>org.dromara</groupId>
+  <artifactId>web3-modules</artifactId>
+  <version>5.6.0</version>
+  <packaging>pom</packaging>
+  <description>web3-modules 业务模块</description>
+  <modules>
+    <module>web3-demo</module>
+    <module>web3-generator</module>
+    <module>web3-job</module>
+    <module>web3-system</module>
+    <module>web3-workflow</module>
+    <module>web3-wallet</module>
+  </modules>
+</project>

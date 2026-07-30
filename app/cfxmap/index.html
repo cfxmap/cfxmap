@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- H5 无 Node 的 process；Vue/uni 部分逻辑会读 process.env，需在首屏脚本前补齐 -->
+    <script>
+      (function () {
+        if (typeof globalThis !== 'undefined' && typeof globalThis.process === 'undefined') {
+          globalThis.process = { env: { NODE_ENV: 'production' } }
+        }
+        if (typeof window !== 'undefined' && typeof window.process === 'undefined' && typeof globalThis !== 'undefined') {
+          window.process = globalThis.process
+        }
+      })()
+    </script>
+    <script>
+      var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') ||
+        CSS.supports('top: constant(a)'))
+      document.write(
+        '<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' +
+        (coverSupport ? ', viewport-fit=cover' : '') + '" />')
+    </script>
+    <title></title>
+    <link rel="icon" href="/static/favicon.png" type="image/png" />
+    <link rel="shortcut icon" href="/static/favicon.ico" />
+    
+    <!-- iOS Web App Support -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="CFXMAP" />
+    <link rel="apple-touch-icon" href="/static/favicon.png" />
+    <!-- Android Web App Support -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    
+    <!-- 首屏在 main.js 执行前避免透出默认黑底；与 App.vue 浅色/深色渐变一致 -->
+    <style>
+      html {
+        min-height: 100%;
+      }
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: linear-gradient(180deg, #b8e6f5 0%, #d4f2fb 28%, #eaf8fe 62%, #ffffff 100%);
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: radial-gradient(ellipse 130% 88% at 100% -12%, rgba(91, 140, 255, 0.18) 0%, transparent 52%),
+            radial-gradient(ellipse 95% 72% at -8% 108%, rgba(51, 207, 255, 0.08) 0%, transparent 46%),
+            linear-gradient(168deg, #020617 0%, #080f1c 14%, #0c1528 32%, #101d36 50%, #152645 68%, #1a2f52 86%, #1e365c 100%);
+        }
+      }
+      #app {
+        min-height: 100%;
+        background: transparent;
+      }
+    </style>
+    <!--preload-links-->
+    <!--app-context-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/js-conflux-sdk@2.3.8/dist/js-conflux-sdk.umd.min.js"></script>
+  </head>
+  <body>
+    <div id="app"><!--app-html--></div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

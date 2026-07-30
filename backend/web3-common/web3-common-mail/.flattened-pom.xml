@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.dromara</groupId>
+    <artifactId>web3-common</artifactId>
+    <version>5.6.0</version>
+  </parent>
+  <groupId>org.dromara</groupId>
+  <artifactId>web3-common-mail</artifactId>
+  <version>5.6.0</version>
+  <description>web3-common-mail 邮件模块</description>
+  <dependencies>
+    <dependency>
+      <groupId>org.dromara</groupId>
+      <artifactId>web3-common-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>cn.hutool</groupId>
+      <artifactId>hutool-core</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>cn.hutool</groupId>
+      <artifactId>hutool-extra</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.mail</groupId>
+      <artifactId>jakarta.mail-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.angus</groupId>
+      <artifactId>jakarta.mail</artifactId>
+    </dependency>
+  </dependencies>
+</project>

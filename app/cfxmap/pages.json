@@ -1,0 +1,260 @@
+{
+	"pages": [
+		{
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "Login",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/login/verify_code",
+			"style": {
+				"navigationBarTitleText": "Verify Code",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/login/forgot_password",
+			"style": {
+				"navigationBarTitleText": "Forgot Password",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/login/register",
+			"style": {
+				"navigationBarTitleText": "Register",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/wallet/wallet",
+			"style": {
+				"navigationBarTitleText": "Wallet",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/community/community",
+			"style": {
+				"navigationBarTitleText": "社区",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/community/post-detail",
+			"style": {
+				"navigationBarTitleText": "帖子详情",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/community/compose",
+			"style": {
+				"navigationBarTitleText": "发帖",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/wallet/transactions",
+			"style": {
+				"navigationBarTitleText": "Transactions",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/wallet/transaction_progress",
+			"style": {
+				"navigationBarTitleText": "Transaction Progress",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/wallet/asset_detail",
+			"style": {
+				"navigationBarTitleText": "Asset Detail",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/nft/gallery",
+			"style": {
+				"navigationBarTitleText": "NFTs",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/nft/detail",
+			"style": {
+				"navigationBarTitleText": "NFT Detail",
+				"navigationStyle": "custom",
+				"transparentTitle": "always"
+			}
+		},
+		{
+			"path": "pages/nft/3d-viewer",
+			"style": {
+				"navigationBarTitleText": "3D Model",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/transfer/send",
+			"style": {
+				"navigationBarTitleText": "Send",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/transfer/receive",
+			"style": {
+				"navigationBarTitleText": "Receive",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/profile",
+			"style": {
+				"navigationBarTitleText": "Profile",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/security_center",
+			"style": {
+				"navigationBarTitleText": "Security Center",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/custody_wallet_notice",
+			"style": {
+				"navigationBarTitleText": "Custody Wallet Notice",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/wallet_manage",
+			"style": {
+				"navigationBarTitleText": "Manage Wallet",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/wallet_remove",
+			"style": {
+				"navigationBarTitleText": "Remove Wallet",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/wallet_import",
+			"style": {
+				"navigationBarTitleText": "Import Wallet",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/wallet_export",
+			"style": {
+				"navigationBarTitleText": "Export Wallet",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/bind_email",
+			"style": {
+				"navigationBarTitleText": "Bind Email",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/change_username",
+			"style": {
+				"navigationBarTitleText": "Change Username",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/change_password",
+			"style": {
+				"navigationBarTitleText": "Change Password",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/trade_password",
+			"style": {
+				"navigationBarTitleText": "Transaction Password",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/profile/api_settings",
+			"style": {
+				"navigationBarTitleText": "API Settings",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/guide/conflux",
+			"style": {
+				"navigationBarTitleText": "Conflux Guide",
+				"navigationStyle": "custom"
+			}
+		},
+		{
+			"path": "pages/system/force-update",
+			"style": {
+				"navigationBarTitleText": "更新",
+				"navigationStyle": "custom",
+				"app-plus": {
+					"bounce": "none",
+					"popGesture": "none"
+				}
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "Web3 Wallet",
+		"navigationBarBackgroundColor": "#E2F5FC",
+		"backgroundColor": "#b8e6f5"
+	},
+	"tabBar": {
+		"color": "#64748B",
+		"selectedColor": "#33CFFF",
+		"backgroundColor": "#F5FDFF",
+		"borderStyle": "white",
+		"list": [
+			{
+				"pagePath": "pages/wallet/wallet",
+				"text": "Wallet",
+				"iconPath": "static/bottom-nav/tab-wallet.png",
+				"selectedIconPath": "static/bottom-nav/tab-wallet-active.png"
+			},
+			{
+				"pagePath": "pages/community/community",
+				"text": "社区",
+				"iconPath": "static/bottom-nav/tab-guide.png",
+				"selectedIconPath": "static/bottom-nav/tab-guide-active.png"
+			},
+			{
+				"pagePath": "pages/guide/conflux",
+				"text": "指南",
+				"iconPath": "static/bottom-nav/tab-guide.png",
+				"selectedIconPath": "static/bottom-nav/tab-guide-active.png"
+			},
+			{
+				"pagePath": "pages/profile/profile",
+				"text": "Profile",
+				"iconPath": "static/bottom-nav/tab-profile.png",
+				"selectedIconPath": "static/bottom-nav/tab-profile-active.png"
+			}
+		]
+	}
+}

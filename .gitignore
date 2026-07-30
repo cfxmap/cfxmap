@@ -1,0 +1,9 @@
+**/target/
+**/dist/
+**/build/
+**/node_modules/
+.idea/
+.vscode/
+.hbuilderx/
+.env
+.env.*

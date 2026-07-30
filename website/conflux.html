@@ -1,0 +1,3251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Conflux 生态服务指南</title>
+  <meta name="description"
+    content="Conflux 生态服务指南一站式汇集链上生态与实用工具。提供资金服务指引（USDT充提、跨链、兑换）、生态工具导航（浏览器、跨链桥、稳定币）及理财收益（PoS质押、借贷、流动性挖矿）等全面教程与入口，助您快速探索 Conflux 树图区块链生态。">
+  <meta name="keywords" content="Conflux, 树图, 区块链, 生态指南, 跨链桥, USDT, Meson, 借贷, 质押, 挖矿, 钱包, 教程, Conflux eSpace">
+
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="Conflux 生态服务指南">
+  <meta property="og:description" content="一站式汇集链上生态与实用工具，帮助你快速了解并使用 Conflux 生态服务。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="clogo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Conflux 生态服务指南">
+  <meta name="twitter:description" content="一站式汇集链上生态与实用工具，帮助你快速了解并使用 Conflux 生态服务。">
+  <meta name="twitter:image" content="clogo.png">
+
+  <!-- 引入 Conflux 图标 -->
+  <link rel="icon" href="clogo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?91a34dbd39cdb936243e209fe51b6d59";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+
+    :root {
+      --primary: #2C5FFF;
+      --text: #1b2e5b;
+      --text-strong: #1a2b55;
+      --text-soft: #5b6c8f;
+    }
+
+    /* Scrollbar Styling */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(44, 95, 255, 1);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(44, 95, 255, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial;
+      color: var(--text);
+      background:
+        radial-gradient(1200px circle at 20% 0%, #eef2ff 0%, #f7f8ff 45%, #f2f3fb 70%),
+        radial-gradient(800px circle at 90% 20%, #e9f1ff 0%, #f7f8ff 70%);
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .bg::before,
+    .bg::after {
+      content: "";
+      position: absolute;
+      width: 540px;
+      height: 540px;
+      border-radius: 50%;
+      filter: blur(60px);
+    }
+
+    .bg::before {
+      left: -120px;
+      top: 60px;
+      background: radial-gradient(closest-side, #b7c6ff 0%, #eef2ff 60%);
+      opacity: .7;
+    }
+
+    .bg::after {
+      right: -80px;
+      top: 140px;
+      background: radial-gradient(closest-side, #b0e1ff 0%, #eef7ff 60%);
+      opacity: .7;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 20;
+    }
+
+    header .nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      backdrop-filter: saturate(150%) blur(8px);
+      gap: 20px;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .lang-switch {
+      position: relative;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-soft);
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .lang-switch:hover {
+      background: rgba(44, 95, 255, 0.05);
+      color: var(--primary);
+    }
+
+    .lang-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 8px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 4px;
+      min-width: 100px;
+      display: none;
+      z-index: 100;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .lang-dropdown.show {
+      display: block;
+      animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-5px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .lang-option {
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--text-strong);
+    }
+
+    .lang-option:hover {
+      background: rgba(44, 95, 255, 0.05);
+      color: var(--primary);
+    }
+
+    .lang-option.active {
+      color: var(--primary);
+      background: rgba(44, 95, 255, 0.1);
+      font-weight: 700;
+    }
+
+    .lang-icon {
+      width: 10px;
+      height: 6px;
+      transition: transform 0.2s;
+    }
+
+    .lang-switch.open .lang-icon {
+      transform: rotate(180deg);
+    }
+
+    .brand {
+      flex: 1;
+      width: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, #2c5fff 0%, #6aa5ff 60%);
+      box-shadow: 0 8px 24px rgba(44, 95, 255, .35);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .brand .text {
+      font-weight: 700;
+      letter-spacing: .3px;
+      color: var(--text-strong);
+    }
+
+    .links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .links a {
+      color: var(--text-soft);
+      font-weight: 600;
+    }
+
+    .links a.active {
+      color: var(--primary);
+    }
+
+    .menu {
+      display: none;
+      cursor: pointer;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 36px;
+      padding: 0 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(44, 95, 255, .15);
+      background: rgba(255, 255, 255, .4);
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 600;
+      transition: all .2s;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #fff;
+      border-color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(44, 95, 255, .12);
+    }
+
+    .btn.primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 4px 12px rgba(44, 95, 255, .25);
+    }
+
+    .btn.primary:hover {
+      background: #1a4bd6;
+      box-shadow: 0 6px 16px rgba(44, 95, 255, .35);
+    }
+
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 72px;
+      line-height: 1.1;
+      margin: 0 0 18px;
+      letter-spacing: 1px;
+      color: var(--text-strong);
+    }
+
+    .hero p {
+      margin: 0 0 26px;
+      font-size: 18px;
+      color: var(--text-soft);
+    }
+
+    .hero .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 48px;
+      padding: 0 26px;
+      border-radius: 12px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 16px 40px rgba(42, 84, 255, .4);
+    }
+
+    .panel {
+      position: relative;
+      max-width: 62.5%;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      z-index: 1;
+    }
+
+    .section {
+      margin: 20px 0;
+    }
+
+    #wallet,
+    #eco,
+    #withdraw,
+    #yield {
+      scroll-margin-top: 100px;
+    }
+
+    .toolTitle {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-strong);
+      margin: 24px 0 16px;
+      padding-left: 12px;
+      border-left: 4px solid var(--primary);
+      line-height: 1.2;
+      scroll-margin-top: 100px;
+    }
+
+    .toolList {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 10px;
+    }
+
+    .toolItem {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(37, 70, 122, 0.04);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .toolItem:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(37, 70, 122, 0.12);
+      background: rgba(255, 255, 255, 0.95);
+      border-color: #fff;
+      z-index: 2;
+    }
+
+    .toolItem .item-title {
+      font-weight: 700;
+      color: var(--text-strong);
+      font-size: 16px;
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+
+    @media (max-width: 1000px) {
+      .toolList {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .section-header {
+      position: relative;
+      max-width: 1200px;
+      margin: 0px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .nav-right {
+      gap: 12px;
+    }
+
+    .section-header .line {
+      width: 48px;
+      height: 4px;
+      background: linear-gradient(90deg, #8fb3ff 0%, #2c5fff 100%);
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+
+    .subTitle {
+      color: var(--text-soft);
+    }
+
+    .title {
+      font-weight: 700;
+      color: var(--text-strong);
+      margin-bottom: 6px;
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .desc {
+      color: var(--text-soft);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 36px 0 12px;
+      position: relative;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 6px;
+      height: 28px;
+      background: linear-gradient(180deg, var(--primary) 0%, #8fb3ff 100%);
+      border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(44, 95, 255, 0.25);
+    }
+
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(44, 95, 255, 0.15), transparent);
+      border-radius: 2px;
+    }
+
+    .section-subtitle {
+      color: var(--text-soft);
+      font-size: 15px;
+      margin-bottom: 32px;
+      margin-top: -12px;
+      line-height: 1.6;
+      max-width: 800px;
+    }
+
+    .section-title>div {
+      padding: 0;
+      background: transparent;
+      border: none;
+      color: var(--text-strong);
+      font-size: 26px;
+      font-weight: 800;
+      box-shadow: none;
+    }
+
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .info-item {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, .4);
+      border-radius: 24px;
+      padding: 12px;
+      gap: 12px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 32px rgba(37, 70, 122, .08);
+      position: relative;
+      scroll-margin-top: 100px;
+    }
+
+    .info-item:hover {
+      z-index: 10;
+    }
+
+    .info-item .line {
+      height: 1px;
+      margin: 20px -16px;
+      background: linear-gradient(90deg, transparent, rgba(44, 95, 255, .2), transparent);
+    }
+
+    .item-title {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(0, 0, 0, .06);
+    }
+
+    .item-title .num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(44, 95, 255, .3);
+    }
+
+    .item-desc {
+      color: var(--text-strong);
+    }
+
+    .single-item {
+      position: relative;
+      margin-top: 10px;
+      padding: 10px 12px;
+      background: #fff;
+      border: 1px solid rgba(255, 255, 255, 1);
+      border-radius: 16px;
+      transition: all .3s;
+      box-shadow: 0 4px 12px rgba(37, 70, 122, .06);
+    }
+
+    .single-item:hover {
+      box-shadow: 0 12px 32px rgba(37, 70, 122, .15);
+      z-index: 5;
+    }
+
+    .item-info {
+      position: relative;
+      color: var(--text-strong);
+    }
+
+    .item-info:first-child {
+      margin-top: 0;
+    }
+
+    .item-info .num {
+      position: relative;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      padding-left: 18px;
+      color: var(--text-strong);
+    }
+
+    .item-info .num::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 0 4px rgba(44, 95, 255, 0.15);
+    }
+
+    .item-info .num .rate {
+      color: #c0392b;
+      font-weight: 700;
+      margin-left: 4px;
+      background: #fceceb;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    .desc {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 4px;
+    }
+
+    .flexDesc {
+      flex: 1;
+      width: 0;
+    }
+
+    .descTitle {
+      display: inline-block;
+      font-weight: 700;
+      color: var(--text-strong);
+      margin-right: 8px;
+      font-size: 14px;
+      line-height: 1.5;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .descText {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--text-soft);
+      text-align: left;
+      display: inline;
+      /* Default to inline for expanded state */
+    }
+
+    .descText .rate {
+      color: var(--primary);
+    }
+
+    .descText.clamped {
+      display: -webkit-box;
+      /* Switch to box for truncation */
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      word-break: break-all;
+    }
+
+    .descText span {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .more-btn {
+      display: inline-block;
+      margin-left: 8px;
+      color: var(--text-strong);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border-bottom: 1px dashed var(--primary);
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+
+    .flex-badge {
+      display: flex;
+      align-items: center;
+    }
+
+    .badge {
+      position: relative;
+      padding: 10px 12px 10px 30px;
+      border-radius: 12px;
+      background: #FFF6ED;
+      border: 1px solid rgba(255, 189, 90, .3);
+      color: #d35400;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(255, 189, 90, .08);
+      margin-top: 12px;
+    }
+
+    .badgeText {
+      position: relative;
+      display: inline;
+      line-height: 1.5;
+      vertical-align: middle;
+    }
+
+    .badgeText.clamped {
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      word-break: break-all;
+    }
+
+    .flex-badgeText {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      word-break: break-all;
+    }
+
+    .flex-badgeText+.more-btn {
+      position: absolute;
+      right: 12px;
+      bottom: 10px;
+      background: #FFF6ED;
+      padding-left: 15px;
+      border-bottom: none;
+      text-decoration: underline;
+      text-decoration-style: dashed;
+      text-decoration-color: var(--primary);
+      text-underline-offset: 2px;
+    }
+
+    .flex-badgeText+.more-btn::before {
+      content: '...';
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: #d35400;
+      font-size: 12px;
+    }
+
+    .badgeIcon {
+      position: absolute;
+      left: 5px;
+      top: 10px;
+      width: 18px;
+      height: 18px;
+      color: #ff9f43;
+    }
+
+    .fun-block {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 8px;
+      margin-top: 8px;
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    .leftNav {
+      position: fixed;
+      left: 24px;
+      top: 10%;
+      width: 230px;
+      max-height: 600px;
+      padding: 20px 12px;
+      background: rgba(255, 255, 255, .6);
+      backdrop-filter: blur(12px) saturate(130%);
+      border: 1px solid rgba(255, 255, 255, .7);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(37, 70, 122, .12);
+      z-index: 100;
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      /* Ensure button is visible */
+      overflow: visible;
+    }
+
+    .leftNav-content {
+      max-height: 560px;
+      /* Adjust based on parent max-height - padding */
+      overflow-y: auto;
+      overflow-x: hidden;
+      /* Custom scrollbar for inner content */
+    }
+
+    .leftNav.collapsed {
+      width: 20px;
+      padding: 0;
+      background: transparent;
+    }
+
+    .leftNav.collapsed .leftNav-content {
+      overflow: hidden;
+    }
+
+    .leftNav.collapsed .mainTitle,
+    .leftNav.collapsed .navList {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+
+    .nav-toggle-btn {
+      position: absolute;
+      top: 50%;
+      right: -16px;
+      width: 32px;
+      height: 32px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(37, 70, 122, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      transform: translateY(-50%);
+      z-index: 101;
+      transition: all 0.3s;
+      color: var(--primary);
+    }
+
+    .navClose {
+      display: none;
+    }
+
+    .nav-toggle-btn:hover {
+      background: var(--primary);
+      color: #fff;
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .leftNav.collapsed .nav-toggle-btn {
+      right: -8px;
+      transform: translateY(-50%) rotate(180deg);
+    }
+
+    .leftNav .mainTitle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--text-strong);
+      padding: 8px;
+      margin-bottom: 0;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    .mainTitle .toggle {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      color: #5b6c8f;
+    }
+
+    .leftNav .mainTitle .toggle svg {
+      transition: transform 0.3s ease;
+    }
+
+    .leftNav .mainTitle .toggle.rotate svg {
+      transform: rotate(180deg);
+    }
+
+    .leftNav .navList {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.3s ease-out, margin 0.3s ease;
+      margin-bottom: 0;
+    }
+
+    .leftNav .navList.open {
+      grid-template-rows: 1fr;
+      margin-bottom: 16px;
+    }
+
+    .leftNav .navList .nav-content {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      position: relative;
+    }
+
+
+    .leftNav a {
+      display: block;
+      padding: 8px 16px;
+      border-radius: 10px;
+      color: var(--text-soft);
+      font-weight: 600;
+      font-size: 13px;
+      transition: all .2s;
+      white-space: nowrap;
+      position: relative;
+    }
+
+    .leftNav a.secondNav {
+      padding-left: 20px;
+      /* Adjust padding to clear the guide line */
+      margin-left: 6px;
+      /* Offset from the guide line */
+    }
+
+    .leftNav a.secondNav::before {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(44, 95, 255, .3);
+      transform: translateY(-50%);
+      transition: all .2s;
+    }
+
+    .leftNav a:hover,
+    .leftNav a.active {
+      background: #fff;
+      color: var(--primary);
+      box-shadow: 0 4px 12px rgba(44, 95, 255, .12);
+    }
+
+    .leftNav a.active::before {
+      background: var(--primary);
+      transform: translateY(-50%) scale(1.2);
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(4px);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .modal-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      width: 90%;
+      max-width: 400px;
+      background: #fff;
+      border-radius: 24px;
+      padding: 32px 24px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      transform: scale(0.9);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      text-align: center;
+    }
+
+    .modal-overlay.show .modal-box {
+      transform: scale(1);
+    }
+
+    .modal-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #fff4e6;
+      color: #ff9f43;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .modal-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-strong);
+      margin-bottom: 12px;
+    }
+
+    .modal-desc {
+      font-size: 15px;
+      color: var(--text-soft);
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .modal-btn {
+      flex: 1;
+      height: 44px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .modal-btn.cancel {
+      background: #f5f7fa;
+      color: var(--text-soft);
+      border: 1px solid transparent;
+    }
+
+    .modal-btn.cancel:hover {
+      background: #eef2f6;
+    }
+
+    .modal-btn.confirm {
+      background: var(--primary);
+      color: #fff;
+      border: 1px solid transparent;
+      box-shadow: 0 8px 20px rgba(44, 95, 255, 0.25);
+    }
+
+    .modal-btn.confirm:hover {
+      background: #1a4bd6;
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 1000px) {
+      #app {
+        width: 100%;
+        padding-bottom: 20px;
+        padding-top: 90px;
+      }
+
+      header .nav {
+        width: 100%;
+        margin: 0;
+      }
+
+      .links {
+        display: none;
+      }
+
+      .section-header {
+        position: relative;
+        z-index: 10;
+        margin-top: 20px;
+      }
+
+      .marginTOP {
+        margin-top: 0;
+      }
+
+      .subTitle {
+        max-width: 90%;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        margin: 30px 0 12px;
+
+      }
+
+      .section-title>div {
+        font-size: 20px;
+      }
+
+      .panel {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 12px 12px;
+      }
+
+      .subTitle {
+        font-size: 12px;
+      }
+
+      .menu {
+        display: block;
+      }
+
+      .info-list {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .info-item {
+        width: 100%;
+        padding: 12px;
+      }
+
+      .item-title {
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        padding-left: 0px;
+      }
+
+      .item-title div {
+        font-size: 14px;
+      }
+
+      .item-title .num {
+        width: 24px;
+        height: 24px;
+        border-radius: 6px;
+        font-size: 12px;
+      }
+
+      .single-item {
+        margin-top: 0px;
+        padding: 12px;
+        margin-bottom: 8px;
+      }
+
+      .single-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .item-info .num {
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .item-info .num::before {
+        top: 5px;
+      }
+
+      .item-info .num .rate {
+        margin-top: 4px;
+        font-size: 13px;
+        margin-left: 0;
+        width: fit-content;
+      }
+
+      .descText {
+        line-height: 1.3;
+      }
+
+      .descTitle {
+        line-height: 1.3;
+      }
+
+      .actions {
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .actions .btn {
+        height: 28px;
+        min-width: 80px;
+        padding: 0 6px;
+        font-size: 12px;
+      }
+
+      .badge {
+        padding: 8px 10px 8px 30px;
+        font-size: 12px;
+        margin-top: 8px;
+      }
+
+      .badgeIcon {
+        top: 8px;
+      }
+
+      .links {
+        gap: 10px;
+      }
+
+      .links a {
+        padding: 8px 6px;
+        font-size: 14px;
+      }
+
+      .menu {
+        cursor: initial;
+      }
+
+      .leftNav {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 60px;
+        left: auto;
+        right: 0;
+        width: 230px;
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(12px);
+        padding: 40px 8px 16px;
+        transform: translateY(-10px) scale(0.98);
+        transform-origin: top right;
+        opacity: 0;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        pointer-events: none;
+        border-radius: 20px 0 0 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        z-index: 100;
+        max-height: 80vh;
+        overflow-y: auto;
+      }
+
+      .nav-toggle-btn {
+        display: none;
+      }
+
+      .navClose {
+        position: absolute;
+        top: 8px;
+        right: 4px;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(44, 95, 255, .4);
+        color: #eef2ff;
+      }
+
+      .leftNav.show {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .leftNav a {
+        padding: 14px 20px;
+      }
+
+      .leftNav a:last-child {
+        border-bottom: none;
+      }
+
+      .leftNav.show .mainTitle {
+        font-size: 15px;
+        color: var(--text-strong);
+        cursor: initial;
+      }
+
+      .leftNav.show .mainTitle .toggle {
+        cursor: initial;
+      }
+
+      .leftNav.show .secondNav {
+        padding-left: 36px;
+        font-size: 15px;
+      }
+
+      .leftNav.show .secondNav::before {
+        left: 20px;
+      }
+
+      .leftNav.show .secondNav.active {
+        color: var(--primary);
+        box-shadow: none;
+        background: rgba(26, 75, 214, .1);
+      }
+
+      .hero {
+        padding: 0 12px;
+      }
+
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <div class="bg"></div>
+    <div class="grid"></div>
+    <header>
+      <div class="nav">
+        <div class="brand">
+          <div class="logo">C</div>
+          <div class="text">{{ currentConfig.name }}</div>
+        </div>
+        <div class="links">
+          <a :class="{'active': activeTab === 'eco'}" href="#eco" @click="activeTab = 'eco'">{{ currentConfig.eco }}</a>
+          <a :class="{'active': activeTab === 'tool'}" href="#tool" @click="activeTab = 'tool'">{{ currentConfig.tool
+            }}</a>
+        </div>
+        <div class="nav-right">
+          <div class="lang-switch" :class="{ open: showLangMenu }" @click.stop="toggleLangMenu">
+            <span>{{ langLabels[currentLang] }}</span>
+            <svg class="lang-icon" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+            <div class="lang-dropdown" :class="{ show: showLangMenu }">
+              <div class="lang-option" :class="{ active: currentLang === 'zh-CN' }" @click.stop="changeLang('zh-CN')">
+                简体中文
+              </div>
+              <div class="lang-option" :class="{ active: currentLang === 'zh-TW' }" @click.stop="changeLang('zh-TW')">
+                繁體中文
+              </div>
+              <div class="lang-option" :class="{ active: currentLang === 'en' }" @click.stop="changeLang('en')">
+                English
+              </div>
+            </div>
+          </div>
+          <div class="menu" @click="toggleMenu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 12H21" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M3 6H21" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M3 18H21" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="ai-bg"></div>
+    <section class="hero" id="eco">
+      <div>
+        <h1>{{ currentConfig.heroTitle }}</h1>
+        <p>{{ currentConfig.heroSubTitle }}</p>
+        <a class="cta" href="#deposit-1">{{ currentConfig.heroBtnText }}</a>
+      </div>
+    </section>
+    <div class="section-header">
+      <div>
+        <h2>{{currentConfig.firstTitle}}</h2>
+        <p class="subTitle">{{currentConfig.firstSubtitle}}</p>
+      </div>
+    </div>
+    <section class="panel" id="eco">
+      <template v-for="(item,index) in contentList">
+        <div class="section" :id="item.id">
+          <div class="section-title">
+            <div>{{item.title}}</div>
+          </div>
+          <div v-if="item.subtitle" class="section-subtitle">{{item.subtitle}}</div>
+          <div class="info-list">
+            <template v-for="(sitem,sindex) in item.content">
+              <div class="info-item" :id="item.id+'-'+(sindex+1)">
+                <div class="item-title">
+                  <div class="num">0{{sindex+1}}</div>
+                  <div>{{sitem.title}}</div>
+                </div>
+                <template v-for="(titem,tindex) in sitem.list">
+                  <div class="single-item">
+                    <div class="item-info">
+                      <div class="num" v-html="titem.title"></div>
+                      <template v-if="!titem.showDesc">
+                        <item-desc :title="currentLang==='en'?'Description':'描述'" :current-lang="currentLang"
+                          :text="titem.desc"></item-desc>
+                      </template>
+                      <template v-else>
+                        <div class="desc">
+                          <span class="descTitle">{{currentLang==='en'?'Description':'描述'}}</span>
+                          <span class="descText" v-html="titem.desc"></span>
+                        </div>
+                      </template>
+
+                      <item-desc v-if="titem.explain"
+                        :title="currentLang==='en'?'Explanation':currentLang==='zh-TW'?'說明':'说明'"
+                        :current-lang="currentLang" :text="titem.explain"></item-desc>
+                    </div>
+                    <div class="actions">
+                      <template v-for="(action,aindex) in titem.btnList">
+                        <a :class="['btn',action.class]" :href="action.link"
+                          @click.prevent="handleOutboundLink(action)">{{action.text}}</a>
+                      </template>
+                    </div>
+                    <badge-desc v-if="titem.badge" :current-lang="currentLang" :line="titem.line"
+                      :text="titem.badge"></badge-desc>
+                  </div>
+                </template>
+              </div>
+            </template>
+          </div>
+        </div>
+      </template>
+    </section>
+    <div class="section-header marginTOP">
+      <div>
+        <h2>{{currentConfig.secondTitle}}</h2>
+        <p class="subTitle">{{currentConfig.secondSubtitle}}</p>
+      </div>
+    </div>
+    <section class="panel" id="tool">
+      <template v-for="(item,index) in toolsList">
+        <div class="toolTitle" :id="item.id">{{item.title}}</div>
+        <div class="toolList">
+          <template v-for="(sitem,sindex) in item.list">
+            <div class="toolItem">
+              <div class="item-title">{{sitem.text}}</div>
+              <a :class="['btn',sitem.class]" :href="sitem.link" @click.prevent="handleOutboundLink(sitem)">
+                <template v-if="currentLang==='en'">
+                  visit
+                </template>
+                <template v-else-if="currentLang==='zh-TW'">
+                  訪問
+                </template>
+                <template v-else>
+                  访问
+                </template>
+              </a>
+            </div>
+          </template>
+        </div>
+      </template>
+    </section>
+    <div class="leftNav" :class="{ show: showMenu, collapsed: isNavCollapsed }">
+      <div class="nav-toggle-btn" @click="toggleNav">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </div>
+      <div class="navClose" @click="toggleMenu">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
+      <div class="leftNav-content">
+        <template v-for="(item,index) in menuList">
+          <div class="mainTitle" @click="expandMenu(item)">
+            <div>{{item.title}}</div>
+            <div class="toggle" :class="{ rotate: item.expand }">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 9L12 15L18 9" stroke="#666" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+          <div class="navList" :class="{ open: item.expand }">
+            <div class="nav-content">
+              <template v-for="(sitem,sindex) in item.list">
+                <a :class="['secondNav',{'active':sitem.link === currentLink}]" :href="sitem.link"
+                  @click="handleLinkClick(sitem.link)">{{sitem.title}}</a>
+              </template>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+
+    <div class="modal-overlay" :class="{ show: showRiskModal }">
+      <div class="modal-box">
+        <div class="modal-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 9V14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M12.0001 17.5H12.0101" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path
+              d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <div class="modal-title">即将离开本页面</div>
+        <div class="modal-desc">
+          您即将跳转至第三方网站。Conflux 不对第三方网站的内容、安全性和隐私政策负责。请注意保护您的资产安全。
+        </div>
+        <div class="modal-actions">
+          <div class="modal-btn cancel" @click="closeRiskModal">取消</div>
+          <div class="modal-btn confirm" @click="confirmNavigation">继续前往</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const { createApp, ref, onMounted, onUnmounted, watch, nextTick } = Vue;
+    const ItemDesc = {
+      props: ['text', 'title', 'currentLang'],
+      template: `
+       <div :class="expanded ? '':'desc'">
+          <span class="descTitle" v-html="title"></span>
+          <span 
+            ref="textRef" 
+            class="descText" 
+            :class="{ clamped: !expanded }"
+            v-html=text
+          >
+          </span>
+          <span 
+            v-if="showButton" 
+            class="more-btn" 
+            @click="toggle"
+          >
+            <template v-if="currentLang=='en'">
+              {{ expanded ? 'Collapse' : 'Read More' }}
+            </template>
+            <template v-else>
+            {{ expanded ? '收起' : '查看更多' }}
+            </template>
+          </span>
+        </div>
+      `,
+      setup(props) {
+        const expanded = ref(false);
+        const showButton = ref(false);
+        const textRef = ref(null);
+        const checkOverflow = () => {
+          const el = textRef.value;
+          if (el) {
+            // scrollHeight > clientHeight indicates overflow
+            showButton.value = el.scrollHeight > el.clientHeight;
+          }
+        };
+        watch(() => props.text, () => {
+          expanded.value = false;
+          nextTick(() => {
+            checkOverflow();
+          });
+        });
+        onMounted(() => {
+          // Wait for render
+          setTimeout(checkOverflow, 100);
+        });
+
+        const toggle = () => {
+          expanded.value = !expanded.value;
+        };
+
+        return {
+          expanded,
+          showButton,
+          textRef,
+          toggle
+        }
+      }
+    };
+    const BadgeDesc = {
+      props: ['text', 'currentLang'],
+      template: `
+        <div :class="['badge',{'flex-badge':!expanded}]">
+          <svg class="badgeIcon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 8V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 16H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div 
+            ref="badgeRef" 
+            :class="['badgeText',{clamped: !expanded}]" 
+          >
+            {{ text }}
+          </div>
+           <span 
+             v-if="showButton" 
+              class="more-btn" 
+              @click.stop="toggle"
+            >
+              <template v-if="currentLang=='en'">
+                {{ expanded ? 'Collapse' : 'Read More' }}
+              </template>
+              <template v-else>
+              {{ expanded ? '收起' : '查看更多' }}
+              </template>
+            </span>
+        </div>
+      `,
+      setup(props) {
+        const expanded = ref(false);
+        const showButton = ref(false);
+        const badgeRef = ref(null);
+
+        const checkOverflow = () => {
+          const el = badgeRef.value;
+          if (el) {
+            showButton.value = el.scrollHeight > el.clientHeight;
+          }
+        };
+        watch(() => props.text, () => {
+          expanded.value = false;
+          nextTick(() => {
+            checkOverflow();
+          });
+        });
+        onMounted(() => {
+          setTimeout(checkOverflow, 100);
+        });
+
+        const toggle = () => {
+          expanded.value = !expanded.value;
+        };
+
+        return {
+          expanded,
+          showButton,
+          badgeRef,
+          toggle
+        }
+      }
+    };
+
+    const app = createApp({
+      components: {
+        ItemDesc,
+        BadgeDesc
+      },
+      setup() {
+        const langLabels = {
+          'zh-CN': '简体中文',
+          'zh-TW': '繁體中文',
+          'en': 'English'
+        };
+        let currentLang = ref(localStorage.getItem('lang') || 'en');
+        let showLangMenu = ref(false);
+        let currentLink = ref('#deposit-1');
+        let showMenu = ref(true);
+        let isNavCollapsed = ref(false);
+        let activeTab = ref('eco');
+        const configInfo = {
+          "zh-CN": {
+            'name': 'Start Conflux',
+            'eco': '服务指引',
+            'tool': '工具导航',
+            'heroTitle': 'Conflux 生态服务指南',
+            'heroSubtitle': '一站式汇集链上生态与实用工具，帮助你快速了解并使用 Conflux 生态服务',
+            'heroBtnText': '立即开始',
+            'firstTitle': '资金服务指引',
+            'firstSubtitle': '集中展示 Conflux 生态中与资产流转相关的常见路径与工具，帮助用户顺畅、安全地完成资金转换和链上资产管理。',
+            'secondTitle': '生态工具导航',
+            'secondSubtitle': '整理 Conflux 生态内常用的应用与工具入口，方便用户访问链上应用并探索更多生态资源。',
+            'contentList': [
+              {
+                title: '链上资产',
+                id: 'deposit',
+                content: [
+                  // {
+                  //   title: '人民币 → 交易所中的 USDT',
+                  //   id: 'deposit-1',
+                  //   list: [
+                  //     {
+                  //       title: '币安',
+                  //       desc: '',
+                  //       showDesc:false,
+                  //       badge: '',
+                  //       explain:'币安是全球交易量长期领先的中心化交易所之一，流动性充足、币种丰富，是许多用户购买 USDT 的主要选择。',
+                  //       btnList: [
+                  //         {
+                  //           text: '币安初学者指南',
+                  //           class: '',
+                  //           alert: true,
+                  //           link: 'https://www.binance.com/zh-CN/support/faq/detail/c780097f75dd450a82d17f1e84153276'
+                  //         },
+                  //         {
+                  //           text: '币安 C2C 教程',
+                  //           class: '',
+                  //           alert: true,
+                  //           link: 'https://www.binance.com/zh-CN/support/faq/detail/384c0a3441b04a9cbe97c9687ef86b60'
+                  //         }
+                  //       ]
+                  //     },
+                  //     {
+                  //       title: 'OKX',
+                  //       desc: '',
+                  //       showDesc:false,
+                  //       badge: '',
+                  //       explain:'OKX 是全球用户覆盖最广的中心化交易所之一，提供稳定的交易体验，也是用户购买 USDT 时最常使用的渠道之一。',
+                  //       btnList: [
+                  //         {
+                  //           text: 'OKX新手攻略',
+                  //           class: '',
+                  //           alert: true,
+                  //           link: 'https://www.okx.com/zh-hans/help/okx-beginners-guide'
+                  //         }
+                  //       ]
+                  //     }
+                  //   ]
+                  // },
+                  {
+                    title: '交易所 USDT → Conflux 链上的 USDT',
+                    id: 'deposit-2',
+                    list: [
+                      {
+                        title: 'Meson',
+                        desc: '支持交易所一键充提 Conflux eSpace 的 USDT0 / USDC / AxCNH，<span class="rate">0 手续费</span>。',
+                        showDesc:true,
+                        badge: '',
+                        explain: 'Meson 是目前 Conflux 链上使用最多的跨链桥，已支持 50+ 条主流高性能区块链。Meson 现已支持用户直接在交易所充提 Conflux eSpace 上的 USDT。目前支持的交易所有：Binance, OKX, Bybit，Gate.io 等。',
+                        btnList: [
+                          {
+                            text: '去跨链',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://meson.fi/'
+                          }, {
+                            text: '跨链教程',
+                            class: '',
+                            alert: false,
+                            link: 'https://forum.conflux.fun/t/meson/21482?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3NjQ2NjUxNjQsImZpbGVHVUlEIjoibTVrdmRkMExwUGZOeW0zWCIsImlhdCI6MTc2NDY2NDg2NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwicGFhIjoiYWxsOmFsbDoiLCJ1c2VySWQiOi05Mzg3MzQ3ODE5fQ.xHJZPTeDWpoqeh-bBHmPjoCUp-MsKSzIq0e_R7e7Iec'
+                          }, {
+                            text: '交易所充提教程',
+                            class: '',
+                            alert: false,
+                            link: 'https://forum.conflux.fun/t/meson-conflux-espace-usdt/22087?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3NjQ2NjUxNjQsImZpbGVHVUlEIjoibTVrdmRkMExwUGZOeW0zWCIsImlhdCI6MTc2NDY2NDg2NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwicGFhIjoiYWxsOmFsbDoiLCJ1c2VySWQiOi05Mzg3MzQ3ODE5fQ.xHJZPTeDWpoqeh-bBHmPjoCUp-MsKSzIq0e_R7e7Iec'
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    title: 'Conflux 链上的 USDT → AxCNH',
+                    id: 'deposit-3',
+                    list: [
+                      {
+                        title: 'WallFreeX',
+                        desc: '支持 Conflux 链上 USDT、CFX、AxCNH 之间的兑换。',
+                        showDesc:false,
+                        badge: '',
+                        explain: 'Uniswap V3 机制的 DEX，滑点更低，USDT <> AxCNH 兑换更推荐使用。',
+                        btnList: [
+                          {
+                            text: '去兑换',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://app.wallfreex.com/swap'
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    title: 'Conflux 链上的 USDT → CFX',
+                    id: 'deposit-4',
+                    list: [
+                      {
+                        title: 'Swappi',
+                        desc: '支持 Conflux 链上各种资产的兑换。',
+                        showDesc:false,
+                        badge: '',
+                        explain: 'Conflux eSpace 的首个 DEX，提供快速、低成本的代币兑换和流动性挖矿服务。',
+                        btnList: [
+                          {
+                            text: '去兑换',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://app.swappi.io/#/swap'
+                          }
+                        ]
+                      },
+                      {
+                        title: 'WallFreeX',
+                        desc: '支持 Conflux 链上USDT、CFX、AxCNH 之间的兑换。',
+                        showDesc:false,
+                        badge: '',
+                        explain: 'Uniswap V3 机制的 DEX，滑点更低，USDT <> AxCNH 兑换更推荐使用。',
+                        btnList: [
+                          {
+                            text: '去兑换',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://app.wallfreex.com/swap'
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+              },
+              {
+                title: '资产兑换',
+                id: 'withdraw',
+                content: [
+                  {
+                    title: 'to C',
+                    id: 'withdraw-1',
+                    list: [
+                      {
+                        title: 'BitUnion',
+                        desc: '一键将USDT转换为法币。',
+                        showDesc:false,
+                        badge: '',
+                        explain: 'BitUnion 是 Conflux 链上的 PayFi 解决方案，致力于协助数字资产实现便捷流通与广泛应用。',
+                        btnList: [
+                          {
+                            text: '全球速汇',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://bitunion.io/'
+                          },
+                          {
+                            text: '使用教程',
+                            class: '',
+                            alert: false,
+                            link: 'https://bitunion.gitbook.io/bitunion-docs'
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  // {
+                  //   title: 'to B',
+                  //   id: 'withdraw-2',
+                  //   list: [
+                  //     {
+                  //       title: '大额贸易',
+                  //       desc: '将 AxCNH 转换为香港银行账户的离岸人民币。',
+                  //       showDesc:false,
+                  //       badge: '',
+                  //       line:1,
+                  //       explain: '汇率：1:1，手续费：<span class="rate">0.3%-0.5%</span>，提供贸易背景，形式发票',
+                  //       btnList: [
+                  //         {
+                  //           text: '去合作',
+                  //           class: 'primary',
+                  //           alert: false,
+                  //           link: 'https://docs.google.com/forms/d/e/1FAIpQLSd0iLl4zKRfw8RRuGXNDLkvjx_eRnCHVnV0HBThGyeteP7SuQ/viewform?usp=dialog'
+                  //         }
+                  //       ]
+                  //     }
+                  //   ]
+                  // }
+                ]
+              },
+              {
+                title: '理财',
+                id: 'yield',
+                content: [
+                  {
+                    title: 'PoS 矿池质押',
+                    id: 'yield-1',
+                    list: [
+                      {
+                        title: 'CFX 质押（ABC 矿池）<span class="rate">年化收益率：8-9%</span>',
+                        desc: '锁仓期为 13+1，奖励<span class="rate"> 随时可领取</span>。',
+                        showDesc:false,
+                        badge: '',
+                        explain: 'ABC 矿池是 Conflux 链上最大的 PoS 矿池 。PoS 质押为币本位理财，主要风险来自币价波动，单次质押量需为 1000 CFX 的整数倍，ABC 矿池将收取奖励的 <span class="rate">8%</span> 作为手续费。',
+                        btnList: [
+                          {
+                            text: '去质押',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://confluxpos.cn/'
+                          },
+                          {
+                            text: '质押教程',
+                            class: '',
+                            alert: false,
+                            link: 'https://forum.conflux.fun/t/abcpool/18125?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3NjQ2NjUxNjQsImZpbGVHVUlEIjoibTVrdmRkMExwUGZOeW0zWCIsImlhdCI6MTc2NDY2NDg2NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwicGFhIjoiYWxsOmFsbDoiLCJ1c2VySWQiOi05Mzg3MzQ3ODE5fQ.xHJZPTeDWpoqeh-bBHmPjoCUp-MsKSzIq0e_R7e7Iec'
+                          }
+                        ]
+
+                      }
+                    ]
+                  },
+                  {
+                    title: 'RWA Vault',
+                    id: 'yield-2',
+                    list: [
+                      {
+                        title: '巡鹰 RWA Vault（dFocre）<span class="rate">年化收益率：8%</span>',
+                        desc: '三个月定期理财。',
+                        showDesc:false,
+                        badge: '12 月 23 日起，参与第二期的用户可提取本金及累计利息。第三期时间待定。',
+                        explain: '本次 RWA 项目的底层资产为「巡鹰出行」在中国境内部署的两轮车换电基础设施。Conflux 通过香港合规实体以有限合伙人（LP）身份参与巡鹰新能源换电基础设施基金的投资。链上用户透过向金库出借稳定币获取收益，Conflux 向用户提供固定年化约 <span class="rate">8%</span> 的收益率。',
+                        btnList: [
+                          {
+                            text: '立即参与',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://rwa.dforce.network/#/Earn'
+                          },
+                          {
+                            text: '操作教程',
+                            class: '',
+                            alert: false,
+                            link: 'https://forum.conflux.fun/t/dforce-conflux-rwa-eag-s2/22736?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3NjQ2NjUxNjQsImZpbGVHVUlEIjoibTVrdmRkMExwUGZOeW0zWCIsImlhdCI6MTc2NDY2NDg2NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwicGFhIjoiYWxsOmFsbDoiLCJ1c2VySWQiOi05Mzg3MzQ3ODE5fQ.xHJZPTeDWpoqeh-bBHmPjoCUp-MsKSzIq0e_R7e7Iec'
+                          }
+                        ]
+
+                      }
+                    ]
+                  },
+                  {
+                    title: '借贷',
+                    id: 'yield-3',
+                    list: [
+                      {
+                        title: 'AxCNH 借贷（Unitus Finance）<span class="rate">年化收益率：4.8%</span>',
+                        showDesc:true,
+                        desc: '通过存入 AxCNH 获取收益，随时可提取。在激励活动期间，用户借出 AxCNH 也可获得<span class="rate">5.2%</span> 的激励（需要另付平台 <span class="rate">2.4%</span> 利息）。',
+                        badge: 'AxCNH 存款激励持续进行中，Conflux将从1 月 30 日起，在接下来的两周时间，为 Unitus Finance 上的 $AxCNH 供应方发放  120,000 $CFX奖励，并为借款方发放  55,000 $CFX 奖励。',
+                        explain: 'AxCNH 是 AnchorX 发行的离岸人民币挂钩的稳定币，已经过哈萨克斯坦监管机构认证。AxCNH 上线 Unitus 后，用户可以开始存入 AxCNH。',
+                        btnList: [
+                          {
+                            text: '立即参与',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://app.unitus.finance/#/lending'
+                          },
+                          {
+                            text: '操作教程',
+                            class: '',
+                            alert: false,
+                            link: 'https://forum.conflux.fun/t/axcnh-unitus/23000?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3NjQ2NjUxNjQsImZpbGVHVUlEIjoibTVrdmRkMExwUGZOeW0zWCIsImlhdCI6MTc2NDY2NDg2NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwicGFhIjoiYWxsOmFsbDoiLCJ1c2VySWQiOi05Mzg3MzQ3ODE5fQ.xHJZPTeDWpoqeh-bBHmPjoCUp-MsKSzIq0e_R7e7Iec'
+                          }
+                        ]
+                      },
+                      {
+                        title: 'USDT0 借贷（Unitus Finance）',
+                        showDesc:false,
+                        desc: '通过存入 USDT0 获取收益，<span class="rate">随时可提取</span>',
+                        badge: '',
+                        explain: 'USDT0 是 Tether USDT 的跨链部署，统一了以太坊和 Conflux 等网络之间全球最大稳定币的流动性。dForce 现已全面集成 USDT0，其借贷协议 Unitus Finance 已提供相关借贷服务。',
+                        btnList: [
+                          {
+                            text: '立即参与',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://app.unitus.finance/#/lending/lend/supply-USDT0'
+                          },
+                          // {
+                          //   text: '操作教程',
+                          //   class: '',
+                          //   alert: false,
+                          //   link: ''
+                          // }
+                        ]
+
+                      }
+                    ]
+                  },
+                  {
+                    title: '流动性激励',
+                    id: 'yield-4',
+                    list: [
+                      {
+                        title: 'AxCNH–USDT0 流动性挖矿（Swappi）',
+                        showDesc:false,
+                        desc: '通过 LP 获取收益，<span class="rate">可随时提取</span>。',
+                        badge: '',
+                        explain: 'Swappi 现已正式上线 AxCNH–USDT0 流动性池。用户可通过为 AxCNH–USDT0 流动性池提供流动性获取收益。',
+                        btnList: [
+                          {
+                            text: '立即参与',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://app.swappi.io/#/pool/v2'
+                          },
+                          {
+                            text: '操作教程',
+                            class: '',
+                            alert: false,
+                            link: 'https://forum.conflux.fun/t/swappi-usdt0-axcnh/23184?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3NjQ5MzIxNTIsImZpbGVHVUlEIjoibTVrdmRkMExwUGZOeW0zWCIsImlhdCI6MTc2NDkzMTg1MiwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwicGFhIjoiYWxsOmFsbDoiLCJ1c2VySWQiOi05MzkxNzQ1Njg3fQ.9VBNNyyPnnf--P_xFOydkMmSRFXaMdlsyo8YbNe98YI'
+                          }
+                        ]
+                      },
+                      {
+                        title: 'WallFreeX',
+                        desc: '支持 Conflux 链上 USDT、CFX、AxCNH 之间的兑换。',
+                        showDesc:false,
+                        badge: 'WallFreeX 推出积分计划，用户通过参与链上交易或提供流动性即可获取积分，未来可凭积分拥有空投等权益。',
+                        explain: 'Uniswap V3 机制的 DEX，滑点更低，USDT <> AxCNH 兑换更推荐使用。',
+                        btnList: [
+                          {
+                            text: '立即参与',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://app.wallfreex.com/pool/add_liquidity'
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+            ],
+            'menuList': [
+              {
+                title: '链上资产',
+                expand: true,
+                list: [
+                  // {
+                  //   title: '币安',
+                  //   link: '#deposit-1'
+                  // },
+                  {
+                    title: 'USDT',
+                    link: '#deposit-1'
+                  },
+                  {
+                    title: 'AxCNH',
+                    link: '#deposit-2'
+                  },
+                  {
+                    title: 'CFX',
+                    link: '#deposit-3'
+                  }
+                ]
+              },
+              {
+                title: '资产兑换',
+                expand: true,
+                list: [
+                  {
+                    title: 'to C',
+                    link: '#withdraw-1'
+                  },
+                  // {
+                  //   title: 'to B',
+                  //   link: '#withdraw-2'
+                  // }
+                ]
+              },
+              {
+                title: '理财',
+                expand: true,
+                list: [
+                  {
+                    title: 'PoS 矿池质押',
+                    link: '#yield-1'
+                  },
+                  {
+                    title: 'RWA Vault',
+                    link: '#yield-2'
+                  }, {
+                    title: '借贷',
+                    link: '#yield-3'
+                  },
+                  {
+                    title: '流动性挖矿',
+                    link: '#yield-4'
+                  }
+                ]
+              },
+              {
+                title: '生态工具导航',
+                expand: false,
+                list: [
+                  {
+                    title: '区块链浏览器',
+                    link: '#tools-1'
+                  },
+                  {
+                    title: '跨链桥',
+                    link: '#tools-2'
+                  },
+                  {
+                    title: '稳定币',
+                    link: '#tools-3'
+                  }
+                ]
+              },
+            ],
+            'toolList': [
+              {
+                title: '区块链浏览器',
+                id: 'tools-1',
+                list: [
+                  {
+                    text: 'Conflux Scan',
+                    class: 'primary',
+                    alert: true,
+                    link: 'https://www.confluxscan.org/'
+                  }
+                ]
+              },
+              {
+                title: '跨链桥',
+                id: 'tools-2',
+                list: [
+                  {
+                    text: 'Meson',
+                    class: 'primary',
+                    alert: true,
+                    link: 'https://meson.fi/'
+                  },
+                  {
+                    text: 'KinetFlow',
+                    class: 'primary',
+                    alert: true,
+                    link: 'https://www.kinetflow.io/'
+                  },
+                  {
+                    text: 'Stargate',
+                    class: 'primary',
+                    alert: true,
+                    link: 'https://stargate.finance/?srcChain=conflux&srcToken=0xaf37E8B6C9ED7f6318979f56Fc287d76c30847ff'
+                  }
+                ]
+              },
+              {
+                title: '稳定币',
+                id: 'tools-3',
+                list: [
+                  {
+                    text: 'USDT0',
+                    class: 'primary',
+                    alert: true,
+                    link: 'https://v2.confluxhub.io/usdt0'
+                  },
+                  {
+                    text: 'AxCNH',
+                    class: 'primary',
+                    alert: true,
+                    link: 'https://v2.confluxhub.io/ax-cnh'
+                  }
+                ]
+              }
+            ]
+          },
+          "en": {
+            'name': 'Start Conflux',
+            'eco': 'Asset Solutions',
+            'tool': 'Ecosystem Resources',
+            'heroTitle': 'Conflux Ecosystem Hub',
+            'heroSubtitle': 'A one-stop hub for Conflux ecosystem tools and services, helping you navigate and get started with ease',
+            'heroBtnText': 'Get Start',
+            'firstTitle': 'Asset Solutions',
+            'firstSubtitle': 'A curated overview of common asset pathways and tools in the Conflux ecosystem, enabling smooth and secure asset swaps, bridging, and on-chain management.',
+            'secondTitle': 'Ecosystem Resources',
+            'secondSubtitle': 'Explore core apps and resources in the Conflux ecosystem, easily access on-chain services and discover more ecosystem tools.',
+            'contentList': [
+              {
+                title: 'On-chain Assets',
+                id: 'deposit',
+                content: [
+                  // {
+                  //   title: 'Fiat → USDT on CEXs',
+                  //   id: 'deposit-1',
+                  //   list: [
+                  //     {
+                  //       title: 'Binance',
+                  //       desc: '',
+                  //       showDesc:false,
+                  //       badge: '',
+                  //       explain:'Binance is one of the world’s leading centralized exchanges by trading volume, known for deep liquidity and a broad range of assets. It remains a primary choice for many users to purchase USDT.',
+                  //       btnList: [
+                  //         {
+                  //           text: 'Binance Beginner’s Guide',
+                  //           class: '',
+                  //           alert: true,
+                  //           link: 'https://www.binance.com/zh-CN/support/faq/detail/c780097f75dd450a82d17f1e84153276'
+                  //         },
+                  //         {
+                  //           text: 'Binance P2P Guide',
+                  //           class: '',
+                  //           alert: true,
+                  //           link: 'https://www.binance.com/zh-CN/support/faq/detail/384c0a3441b04a9cbe97c9687ef86b60'
+                  //         }
+                  //       ]
+                  //     },
+                  //     {
+                  //       title: 'OKX',
+                  //       desc: '',
+                  //       showDesc:false,
+                  //       badge: '',
+                  //       explain:'OKX is one of the most widely used global centralized exchanges, offering a reliable trading experience and serving as a popular option for purchasing USDT.',
+                  //       btnList: [
+                  //         {
+                  //           text: 'OKX Beginner’s Guide',
+                  //           class: '',
+                  //           alert: true,
+                  //           link: 'https://www.okx.com/zh-hans/help/okx-beginners-guide'
+                  //         }
+                  //       ]
+                  //     }
+                  //   ]
+                  // },
+                  {
+                    title: 'USDT on CEXs → USDT on Conflux',
+                    id: 'deposit-2',
+                    list: [
+                      {
+                        title: 'Meson',
+                        desc: '<span class="rate">Zero-fee bridge</span> from CEX to Conflux eSpace for USDT0 / USDC / AxCNH.',
+                        showDesc:true,
+                        badge: '',
+                        explain: 'Meson is the most widely used bridge in the Conflux ecosystem, supporting 50+ high-performance chains and enabling direct deposits and withdrawals from CEXs to Conflux eSpace. Supported CEXs include Binance, OKX, Bybit and Gate.io.',
+                        btnList: [
+                          {
+                            text: 'Get Started',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://meson.fi/'
+                          }, {
+                            text: 'Guide: Swap',
+                            class: '',
+                            alert: false,
+                            link: 'https://forum.conflux.fun/t/meson/21482?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3NjQ2NjUxNjQsImZpbGVHVUlEIjoibTVrdmRkMExwUGZOeW0zWCIsImlhdCI6MTc2NDY2NDg2NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwicGFhIjoiYWxsOmFsbDoiLCJ1c2VySWQiOi05Mzg3MzQ3ODE5fQ.xHJZPTeDWpoqeh-bBHmPjoCUp-MsKSzIq0e_R7e7Iec'
+                          }, {
+                            text: 'CEX<>eSpace',
+                            class: '',
+                            alert: false,
+                            link: 'https://forum.conflux.fun/t/meson-conflux-espace-usdt/22087?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3NjQ2NjUxNjQsImZpbGVHVUlEIjoibTVrdmRkMExwUGZOeW0zWCIsImlhdCI6MTc2NDY2NDg2NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwicGFhIjoiYWxsOmFsbDoiLCJ1c2VySWQiOi05Mzg3MzQ3ODE5fQ.xHJZPTeDWpoqeh-bBHmPjoCUp-MsKSzIq0e_R7e7Iec'
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    title: 'USDT on Conflux → AxCNH',
+                    id: 'deposit-3',
+                    list: [
+                      {
+                        title: 'WallFreeX',
+                        desc: 'Supports swapping between USDT, CFX, and AxCNH on Conflux.',
+                        showDesc:false,
+                        badge: '',
+                        explain: 'A DEX built on Uniswap V3, offering low-slippage swaps. Recommended for USDT ↔ AxCNH swaps on Conflux.',
+                        btnList: [
+                          {
+                            text: 'Start Swapping',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://app.wallfreex.com/swap'
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    title: 'USDT on Conflux → CFX',
+                    id: 'deposit-4',
+                    list: [
+                      {
+                        title: 'Swappi',
+                        desc: 'Supports swapping a variety of assets on Conflux.',
+                        showDesc:false,
+                        badge: '',
+                        explain: 'The first DEX on Conflux eSpace, offering fast, low-cost swaps, with LP staking to earn yield.',
+                        btnList: [
+                          {
+                            text: 'Start Swapping',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://app.swappi.io/#/swap'
+                          }
+                        ]
+                      },
+                      {
+                        title: 'WallFreeX',
+                        desc: 'Supports swapping between USDT, CFX, and AxCNH on Conflux.',
+                        showDesc:false,
+                        badge: '',
+                        explain: 'A DEX built on Uniswap V3, offering low-slippage swaps. Recommended for USDT ↔ AxCNH swaps on Conflux.',
+                        btnList: [
+                          {
+                            text: 'Start Swapping',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://app.wallfreex.com/swap'
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+              },
+              {
+                title: 'Asset Off-Ramps',
+                id: 'withdraw',
+                content: [
+                  {
+                    title: 'to C',
+                    id: 'withdraw-1',
+                    list: [
+                      {
+                        title: 'BitUnion',
+                        desc: 'Swap USDT to fiat in one click.',
+                        showDesc:false,
+                        badge: '',
+                        explain: 'BitUnion is a PayFi solution built on Conflux, designed to make digital assets easier to use and circulate in real-world scenarios.',
+                        btnList: [
+                          {
+                            text: 'Get Started',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://bitunion.io/'
+                          },
+                          {
+                            text: 'Guide',
+                            class: '',
+                            alert: false,
+                            link: 'https://bitunion.gitbook.io/bitunion-docs'
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  // {
+                  //   title: 'to B',
+                  //   id: 'withdraw-2',
+                  //   list: [
+                  //     {
+                  //       title: 'High-Value Trade',
+                  //       desc: 'Convert AxCNH to offshore RMB and settle directly into a Hong Kong bank account.',
+                  //       showDesc:false,
+                  //       badge: '',
+                  //       line:1,
+                  //       explain: 'This service provides trade background documentation and pro forma invoices to support compliant settlement, with an exchange rate of 1:1 and a fee of 0.3%–0.5%.',
+                  //       btnList: [
+                  //         {
+                  //           text: 'Apply',
+                  //           class: 'primary',
+                  //           alert: false,
+                  //           link: 'https://docs.google.com/forms/d/e/1FAIpQLSd0iLl4zKRfw8RRuGXNDLkvjx_eRnCHVnV0HBThGyeteP7SuQ/viewform?usp=dialog'
+                  //         }
+                  //       ]
+                  //     }
+                  //   ]
+                  // }
+                ]
+              },
+              {
+                title: 'Asset Management',
+                id: 'yield',
+                content: [
+                  {
+                    title: 'PoS Staking',
+                    id: 'yield-1',
+                    list: [
+                      {
+                        title: 'CFX Staking (ABC Pool)<span class="rate">APY：8-9%</span>',
+                        desc: 'Lock-up: 13+1, rewards claimable <span class="rate">anytime</span>.',
+                        showDesc:false,
+                        badge: '',
+                        explain: 'ABC Pool is Conflux’s largest PoS staking pool, offering coin-based yields. Price volatility is the primary risk. Single staking amounts must be in multiples of 1,000 CFX. ABC Pool charges <span class="rate">8%</span> of rewards as a service fee.',
+                        btnList: [
+                          {
+                            text: 'Get Started',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://confluxpos.cn/'
+                          },
+                          {
+                            text: 'Guide',
+                            class: '',
+                            alert: false,
+                            link: 'https://forum.conflux.fun/t/abcpool/18125?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3NjQ2NjUxNjQsImZpbGVHVUlEIjoibTVrdmRkMExwUGZOeW0zWCIsImlhdCI6MTc2NDY2NDg2NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwicGFhIjoiYWxsOmFsbDoiLCJ1c2VySWQiOi05Mzg3MzQ3ODE5fQ.xHJZPTeDWpoqeh-bBHmPjoCUp-MsKSzIq0e_R7e7Iec'
+                          }
+                        ]
+
+                      }
+                    ]
+                  },
+                  {
+                    title: 'RWA Vault',
+                    id: 'yield-2',
+                    list: [
+                      {
+                        title: 'EAG RWA Vault (dForce)<span class="rate">APY：8%</span>',
+                        desc: '3-month fixed-term yield.',
+                        showDesc:false,
+                        badge: 'Starting December 23, users participating in Phase 2 may withdraw both their principal and accumulated interest. Phase 3 timing is TBD.',
+                        explain: 'The underlying assets of this RWA project are Eagle’s two-wheeler battery swap infrastructure deployed across China. Conflux participates as an LP in the Eagle New Energy Battery Swap Infrastructure Fund via a compliant Hong Kong-based entity. On-chain users can deposit stablecoins into the vault and earn a fixed APY of approximately <span class="rate">8%</span>.',
+                        btnList: [
+                          {
+                            text: 'Get Started',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://rwa.dforce.network/#/Earn'
+                          },
+                          {
+                            text: 'Guide',
+                            class: '',
+                            alert: false,
+                            link: 'https://forum.conflux.fun/t/dforce-conflux-rwa-eag-s2/22736?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3NjQ2NjUxNjQsImZpbGVHVUlEIjoibTVrdmRkMExwUGZOeW0zWCIsImlhdCI6MTc2NDY2NDg2NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwicGFhIjoiYWxsOmFsbDoiLCJ1c2VySWQiOi05Mzg3MzQ3ODE5fQ.xHJZPTeDWpoqeh-bBHmPjoCUp-MsKSzIq0e_R7e7Iec'
+                          }
+                        ]
+
+                      }
+                    ]
+                  },
+                  {
+                    title: 'Lending & Borrowing',
+                    id: 'yield-3',
+                    list: [
+                      {
+                        title: 'AxCNH Lending (Unitus Finance)<span class="rate">APY：4.8%</span>',
+                        desc: 'Earn yield by depositing AxCNH, withdraw anytime. During the incentive campaign, users can also earn <span class="rate">5.2%</span> rewards for lending AxCNH (an additional <span class="rate">2.4%</span> interest payable to the platform).',
+                        showDesc:true,
+                        badge: 'AxCNH lending incentives are ongoing. From Jan 30, Conflux will distribute 120,000 $CFX rewards to suppliers of $AxCNH on Unitus Finance and 55,000 $CFX to borrowers over two weeks.',
+                        explain: 'AxCNH is an offshore RMB-pegged stablecoin issued by AnchorX and regulated in Kazakhstan. Users can now deposit AxCNH on Unitus',
+                        btnList: [
+                          {
+                            text: 'Get Started',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://app.unitus.finance/#/lending'
+                          },
+                          {
+                            text: 'Guide',
+                            class: '',
+                            alert: false,
+                            link: 'https://forum.conflux.fun/t/axcnh-unitus/23000?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3NjQ2NjUxNjQsImZpbGVHVUlEIjoibTVrdmRkMExwUGZOeW0zWCIsImlhdCI6MTc2NDY2NDg2NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwicGFhIjoiYWxsOmFsbDoiLCJ1c2VySWQiOi05Mzg3MzQ3ODE5fQ.xHJZPTeDWpoqeh-bBHmPjoCUp-MsKSzIq0e_R7e7Iec'
+                          }
+                        ]
+                      },
+                      {
+                        title: 'USDT0 Lending (Unitus Finance)',
+                        desc: 'Earn yield by depositing USDT0, withdraw <span class="rate">anytime</span>.',
+                        showDesc:false,
+                        badge: '',
+                        explain: 'USDT0 is built on LayerZero’s Omnichain Fungible Token (OFT) standard, designed to create a unified layer of cross-chain liquidity. USDT0 is now fully integrated into dForce ecosystem. And Unitus Finance already launched USDT0 lending pool on Conflux eSpace.',
+                        btnList: [
+                          {
+                            text: 'Get Started',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://app.unitus.finance/#/lending/lend/supply-USDT0'
+                          },
+                          // {
+                          //   text: '操作教程',
+                          //   class: '',
+                          //   alert: false,
+                          //   link: ''
+                          // }
+                        ]
+
+                      }
+                    ]
+                  },
+                  {
+                    title: 'LP Staking',
+                    id: 'yield-4',
+                    list: [
+                      {
+                        title: 'AxCNH–USDT0 LP Staking (Swappi)',
+                        desc: 'Earn yield by providing liquidity, withdraw <span class="rate">anytime</span>.',
+                        showDesc:false,
+                        badge: '',
+                        explain: 'Swappi has officially launched the AxCNH–USDT0 liquidity pool. Users can earn yield by providing liquidity to this pool.',
+                        btnList: [
+                          {
+                            text: 'Get Started',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://app.swappi.io/#/pool/v2'
+                          },
+                          {
+                            text: 'Guide',
+                            class: '',
+                            alert: false,
+                            link: 'https://forum.conflux.fun/t/swappi-usdt0-axcnh/23184?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3NjQ5MzIxNTIsImZpbGVHVUlEIjoibTVrdmRkMExwUGZOeW0zWCIsImlhdCI6MTc2NDkzMTg1MiwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwicGFhIjoiYWxsOmFsbDoiLCJ1c2VySWQiOi05MzkxNzQ1Njg3fQ.9VBNNyyPnnf--P_xFOydkMmSRFXaMdlsyo8YbNe98YI'
+                          }
+                        ]
+                      },
+                      {
+                        title: 'WallFreeX',
+                        desc: 'Supports swapping between USDT, CFX, and AxCNH on Conflux.',
+                        badge: 'WallFreeX has launched a points program. Users can earn points by swapping on-chain or providing liquidity, which can later be redeemed for airdrops and other rewards.',
+                        explain: 'A DEX built on Uniswap V3, offering low-slippage swaps. Recommended for USDT ↔ AxCNH swaps on Conflux.',
+                        btnList: [
+                          {
+                            text: 'Get Started',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://app.wallfreex.com/pool/add_liquidity'
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+            ],
+            'menuList': [
+              {
+                title: 'On-chain Assets',
+                expand: true,
+                list: [
+                  // {
+                  //   title: 'Binance',
+                  //   link: '#deposit-1'
+                  // },
+                  {
+                    title: 'USDT',
+                    link: '#deposit-1'
+                  },
+                  {
+                    title: 'AxCNH',
+                    link: '#deposit-2'
+                  },
+                  {
+                    title: 'CFX',
+                    link: '#deposit-3'
+                  }
+                ]
+              },
+              {
+                title: 'Asset Off-Ramps',
+                expand: true,
+                list: [
+                  {
+                    title: 'to C',
+                    link: '#withdraw-1'
+                  },
+                  // {
+                  //   title: 'to B',
+                  //   link: '#withdraw-2'
+                  // }
+                ]
+              },
+              {
+                title: 'Asset Management',
+                expand: true,
+                list: [
+                  {
+                    title: 'PoS Staking',
+                    link: '#yield-1'
+                  },
+                  {
+                    title: 'RWA Vault',
+                    link: '#yield-2'
+                  }, {
+                    title: 'Lending & Borrowing',
+                    link: '#yield-3'
+                  },
+                  {
+                    title: 'LP Staking',
+                    link: '#yield-4'
+                  }
+                ]
+              },
+              {
+                title: 'Ecosystem Resources',
+                expand: false,
+                list: [
+                  {
+                    title: 'Blockchain Explorer',
+                    link: '#tools-1'
+                  },
+                  {
+                    title: 'Bridges',
+                    link: '#tools-2'
+                  },
+                  {
+                    title: 'Stablecoins',
+                    link: '#tools-3'
+                  }
+                ]
+              },
+            ],
+            'toolList': [
+              {
+                title: 'Blockchain Explorer',
+                id: 'tools-1',
+                list: [
+                  {
+                    text: 'Conflux Scan',
+                    class: 'primary',
+                    alert: true,
+                    link: 'https://www.confluxscan.org/'
+                  }
+                ]
+              },
+              {
+                title: 'Bridges',
+                id: 'tools-2',
+                list: [
+                  {
+                    text: 'Meson',
+                    class: 'primary',
+                    alert: true,
+                    link: 'https://meson.fi/'
+                  },
+                  {
+                    text: 'KinetFlow',
+                    class: 'primary',
+                    alert: true,
+                    link: 'https://www.kinetflow.io/'
+                  },
+                  {
+                    text: 'Stargate',
+                    class: 'primary',
+                    alert: true,
+                    link: 'https://stargate.finance/?srcChain=conflux&srcToken=0xaf37E8B6C9ED7f6318979f56Fc287d76c30847ff'
+                  }
+                ]
+              },
+              {
+                title: 'Stablecoins',
+                id: 'tools-3',
+                list: [
+                  {
+                    text: 'USDT0',
+                    class: 'primary',
+                    alert: true,
+                    link: 'https://v2.confluxhub.io/usdt0'
+                  },
+                  {
+                    text: 'AxCNH',
+                    class: 'primary',
+                    alert: true,
+                    link: 'https://v2.confluxhub.io/ax-cnh'
+                  }
+                ]
+              }
+            ]
+          },
+          "zh-TW": {
+            'name': 'Start Conflux',
+            'eco': '服務指引',
+            'tool': '工具導航',
+            'heroTitle': 'Conflux 生態服務指南',
+            'heroSubtitle': '一站式匯集鏈上生態與實用工具，幫助你快速了解並使用 Conflux 生態服務',
+            'heroBtnText': '立即開始',
+            'firstTitle': '資金服務指引',
+            'firstSubtitle': '集中展示 Conflux 生態中與資產流轉相關的常見路徑與工具，幫助用戶順暢、安全地完成資金轉換與鏈上資產管理。',
+            'secondTitle': '生態工具導航',
+            'secondSubtitle': '整理 Conflux 生態內常用的應用與工具入口，方便用戶訪問鏈上服務並探索更多生態資源。',
+            'contentList': [
+              {
+                title: '鏈上資產',
+                id: 'deposit',
+                content: [
+                  // {
+                  //   title: '法幣 → 交易所中的 USDT',
+                  //   id: 'deposit-1',
+                  //   list: [
+                  //     {
+                  //       title: '幣安',
+                  //       desc: '',
+                  //       showDesc:false,
+                  //       badge: '',
+                  //       explain:'幣安是全球交易量長期領先的中心化交易所之一，流動性充足、幣種豐富，是許多用戶購買 USDT 的主要選擇。',
+                  //       btnList: [
+                  //         {
+                  //           text: '幣安初學者指南',
+                  //           class: '',
+                  //           alert: true,
+                  //           link: 'https://www.binance.com/zh-CN/support/faq/detail/c780097f75dd450a82d17f1e84153276'
+                  //         },
+                  //         {
+                  //           text: '幣安 C2C 教程',
+                  //           class: '',
+                  //           alert: true,
+                  //           link: 'https://www.binance.com/zh-CN/support/faq/detail/384c0a3441b04a9cbe97c9687ef86b60'
+                  //         }
+                  //       ]
+                  //     },
+                  //     {
+                  //       title: 'OKX',
+                  //       desc: '',
+                  //       showDesc:false,
+                  //       badge: '',
+                  //       explain:'OKX 是全球用戶覆蓋最廣的中心化交易所之一，提供穩定的交易體驗，也是用戶購買 USDT 時最常使用的渠道之一。',
+                  //       btnList: [
+                  //         {
+                  //           text: 'OKX 新手攻略',
+                  //           class: '',
+                  //           alert: true,
+                  //           link: 'https://www.okx.com/zh-hans/help/okx-beginners-guide'
+                  //         }
+                  //       ]
+                  //     }
+                  //   ]
+                  // },
+                  {
+                    title: '交易所中的 USDT → Conflux 鏈上的 USDT',
+                    id: 'deposit-2',
+                    list: [
+                      {
+                        title: 'Meson',
+                        desc: '支持交易所一鍵充提 Conflux eSpace 的 USDT0 / USDC / AxCNH，<span class="rate">0 手續費。</span>',
+                        showDesc:true,
+                        badge: '',
+                        explain: 'Meson 是目前 Conflux 鏈上使用最多的跨鏈橋，已支持 50+ 條主流高性能區塊鏈。用戶可直接在交易所充提 Conflux eSpace 上的 USDT。支持的交易所包括 Binance、OKX、Bybit、Gate.io 等。',
+                        btnList: [
+                          {
+                            text: '去跨鏈',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://meson.fi/'
+                          }, {
+                            text: '跨鏈教程',
+                            class: '',
+                            alert: false,
+                            link: 'https://forum.conflux.fun/t/meson/21482?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3NjQ2NjUxNjQsImZpbGVHVUlEIjoibTVrdmRkMExwUGZOeW0zWCIsImlhdCI6MTc2NDY2NDg2NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwicGFhIjoiYWxsOmFsbDoiLCJ1c2VySWQiOi05Mzg3MzQ3ODE5fQ.xHJZPTeDWpoqeh-bBHmPjoCUp-MsKSzIq0e_R7e7Iec'
+                          }, {
+                            text: '交易所充提教程',
+                            class: '',
+                            alert: false,
+                            link: 'https://forum.conflux.fun/t/meson-conflux-espace-usdt/22087?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3NjQ2NjUxNjQsImZpbGVHVUlEIjoibTVrdmRkMExwUGZOeW0zWCIsImlhdCI6MTc2NDY2NDg2NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwicGFhIjoiYWxsOmFsbDoiLCJ1c2VySWQiOi05Mzg3MzQ3ODE5fQ.xHJZPTeDWpoqeh-bBHmPjoCUp-MsKSzIq0e_R7e7Iec'
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    title: 'Conflux 鏈上的 USDT → AxCNH',
+                    id: 'deposit-3',
+                    list: [
+                      {
+                        title: 'WallFreeX',
+                        desc: '支持 Conflux 鏈上 USDT、CFX、AxCNH 之間的兌換。',
+                        showDesc:false,
+                        badge: '',
+                        explain: '採用 Uniswap V3 機制的 DEX，滑點更低，USDT ↔ AxCNH 兌換更推薦使用。',
+                        btnList: [
+                          {
+                            text: '去兌換',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://app.wallfreex.com/swap'
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    title: 'Conflux 鏈上的 USDT → CFX',
+                    id: 'deposit-4',
+                    list: [
+                      {
+                        title: 'Swappi',
+                        desc: '支持 Conflux 鏈上各種資產的兌換。',
+                        showDesc:false,
+                        badge: '',
+                        explain: 'Conflux eSpace 的首個 DEX，提供快速、低成本的代幣兌換及流動性挖礦服務。',
+                        btnList: [
+                          {
+                            text: '去兌換',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://app.swappi.io/#/swap'
+                          }
+                        ]
+                      },
+                      {
+                        title: 'WallFreeX',
+                        desc: '支持 Conflux 鏈上 USDT、CFX、AxCNH 之間的兌換。',
+                        showDesc:false,
+                        badge: '',
+                        explain: '採用 Uniswap V3 機制的 DEX，滑點更低，USDT ↔ AxCNH 兌換更推薦使用。',
+                        btnList: [
+                          {
+                            text: '去兌換',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://app.wallfreex.com/swap'
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+              },
+              {
+                title: '資產兌換',
+                id: 'withdraw',
+                content: [
+                  {
+                    title: 'to C',
+                    id: 'withdraw-1',
+                    list: [
+                      {
+                        title: 'BitUnion',
+                        desc: '一鍵將 USDT 轉換為法幣。',
+                        showDesc:false,
+                        badge: '',
+                        explain: 'BitUnion 是 Conflux 鏈上的 PayFi 方案，致力於協助數字資產實現便捷流通與廣泛應用。',
+                        btnList: [
+                          {
+                            text: '全球速匯',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://bitunion.io/'
+                          },
+                          {
+                            text: '使用教程',
+                            class: '',
+                            alert: false,
+                            link: 'https://bitunion.gitbook.io/bitunion-docs'
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  // {
+                  //   title: 'to B',
+                  //   id: 'withdraw-2',
+                  //   list: [
+                  //     {
+                  //       title: '大額貿易',
+                  //       desc: '將 AxCNH 轉換為香港銀行帳戶的離岸人民幣。',
+                  //       showDesc:false,
+                  //       badge: '',
+                  //       line:1,
+                  //       explain: '匯率 1:1，手續費：<span class="rate">0.3%-0.5%</span>，提供貿易背景文件與形式發票',
+                  //       btnList: [
+                  //         {
+                  //           text: '去合作',
+                  //           class: 'primary',
+                  //           alert: false,
+                  //           link: 'https://docs.google.com/forms/d/e/1FAIpQLSd0iLl4zKRfw8RRuGXNDLkvjx_eRnCHVnV0HBThGyeteP7SuQ/viewform?usp=dialog'
+                  //         }
+                  //       ]
+                  //     }
+                  //   ]
+                  // }
+                ]
+              },
+              {
+                title: '理財',
+                id: 'yield',
+                content: [
+                  {
+                    title: 'PoS 礦池質押',
+                    id: 'yield-1',
+                    list: [
+                      {
+                        title: 'CFX 质押（ABC 矿池）<span class="rate">年化收益率：8-9%</span>',
+                        desc: '鎖倉期 13+1，獎勵<span class="rate">隨時可領取。</span>',
+                        showDesc:false,
+                        badge: '',
+                        explain: 'ABC 矿池是 Conflux 鏈上最大的 PoS 礦池。PoS 質押為幣本位理財，主要風險來自幣價波動。單次質押量需為 1000 CFX 的整數倍，ABC 矿池收取獎勵的<span class="rate">8%</span> 作為手續費。',
+                        btnList: [
+                          {
+                            text: '去質押',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://confluxpos.cn/'
+                          },
+                          {
+                            text: '質押教程',
+                            class: '',
+                            alert: false,
+                            link: 'https://forum.conflux.fun/t/abcpool/18125?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3NjQ2NjUxNjQsImZpbGVHVUlEIjoibTVrdmRkMExwUGZOeW0zWCIsImlhdCI6MTc2NDY2NDg2NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwicGFhIjoiYWxsOmFsbDoiLCJ1c2VySWQiOi05Mzg3MzQ3ODE5fQ.xHJZPTeDWpoqeh-bBHmPjoCUp-MsKSzIq0e_R7e7Iec'
+                          }
+                        ]
+
+                      }
+                    ]
+                  },
+                  {
+                    title: 'RWA Vault',
+                    id: 'yield-2',
+                    list: [
+                      {
+                        title: '巡鷹 RWA Vault（dForce）<span class="rate">年化收益率：8%</span>',
+                        desc: '三個月定期理財。',
+                        showDesc:false,
+                        badge: '自 12 月 23 日起，參與第二期的用戶可提取本金及累計利息。第三期時間待定。',
+                        explain: '本次 RWA 項目的底層資產為「巡鷹出行」在中國境內部署的兩輪車換電基礎設施。Conflux 透過香港合規實體以有限合夥人（LP）身份參與巡鷹新能源換電基礎設施基金的投資。鏈上用戶可向金庫出借穩定幣以獲取收益，Conflux 向用戶提供固定年化約<span class="rate">8%</span> 的收益率。',
+                        btnList: [
+                          {
+                            text: '立即參與',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://rwa.dforce.network/#/Earn'
+                          },
+                          {
+                            text: '操作教程',
+                            class: '',
+                            alert: false,
+                            link: 'https://forum.conflux.fun/t/dforce-conflux-rwa-eag-s2/22736?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3NjQ2NjUxNjQsImZpbGVHVUlEIjoibTVrdmRkMExwUGZOeW0zWCIsImlhdCI6MTc2NDY2NDg2NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwicGFhIjoiYWxsOmFsbDoiLCJ1c2VySWQiOi05Mzg3MzQ3ODE5fQ.xHJZPTeDWpoqeh-bBHmPjoCUp-MsKSzIq0e_R7e7Iec'
+                          }
+                        ]
+
+                      }
+                    ]
+                  },
+                  {
+                    title: '借貸',
+                    id: 'yield-3',
+                    list: [
+                      {
+                        title: 'AxCNH 借貸（Unitus Finance）<span class="rate">年化收益率：4.8%</span>',
+                        desc: '透過存入 AxCNH 獲取收益，可隨時提取。在激勵活動期間，用戶借出 AxCNH 也可獲得 <span class="rate">5.2%</span> 的激勵（需另付平台 <span class="rate">2.4%</span> 利息）。',
+                        showDesc:true,
+                        badge: 'AxCNH 存款激勵持續進行中。Conflux 將自 1 月 30 日起，在接下來兩週內向 Unitus Finance 上的 $AxCNH 供應方發放 120,000 $CFX 獎勵，並向借款方發放 55,000 $CFX 獎勵。',
+                        explain: 'AxCNH 是 AnchorX 發行的離岸人民幣掛鉤的穩定幣，已獲哈薩克斯坦監管機構認證。AxCNH 上線 Unitus 後，用戶可開始存入 AxCNH。',
+                        btnList: [
+                          {
+                            text: '立即參與',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://app.unitus.finance/#/lending'
+                          },
+                          {
+                            text: '操作教程',
+                            class: '',
+                            alert: false,
+                            link: 'https://forum.conflux.fun/t/axcnh-unitus/23000?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3NjQ2NjUxNjQsImZpbGVHVUlEIjoibTVrdmRkMExwUGZOeW0zWCIsImlhdCI6MTc2NDY2NDg2NCwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwicGFhIjoiYWxsOmFsbDoiLCJ1c2VySWQiOi05Mzg3MzQ3ODE5fQ.xHJZPTeDWpoqeh-bBHmPjoCUp-MsKSzIq0e_R7e7Iec'
+                          }
+                        ]
+                      },
+                      {
+                        title: 'USDT0 借貸（Unitus Finance）',
+                        desc: '通過存入 USDT0 獲取收益，<span class="rate">隨時可提取</span>。',
+                        badge: '',
+                        explain: 'USDT0 是 Tether USDT 的跨鏈部署，統一了以太坊和 Conflux 等網絡間全球最大穩定幣的流動性。dForce 已全面集成 USDT0，其借貸協議 Unitus Finance 已提供相關服務。',
+                        btnList: [
+                          {
+                            text: '立即參與',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://app.unitus.finance/#/lending/lend/supply-USDT0'
+                          },
+                          // {
+                          //   text: '操作教程',
+                          //   class: '',
+                          //   alert: false,
+                          //   link: ''
+                          // }
+                        ]
+
+                      }
+                    ]
+                  },
+                  {
+                    title: '流動性激勵',
+                    id: 'yield-4',
+                    list: [
+                      {
+                        title: 'AxCNH–USDT0 流動性挖礦（Swappi）',
+                        desc: '通過提供流動性獲取收益，<span class="rate">隨時可提取</span>。',
+                        showDesc:false,
+                        badge: '',
+                        explain: 'Swappi 已正式上線 AxCNH–USDT0 流動性池。用戶可通過為 AxCNH–USDT0 流動性池提供流動性獲得收益。',
+                        btnList: [
+                          {
+                            text: '立即參與',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://app.swappi.io/#/pool/v2'
+                          },
+                          {
+                            text: '操作教程',
+                            class: '',
+                            alert: false,
+                            link: 'https://forum.conflux.fun/t/swappi-usdt0-axcnh/23184?accessToken=eyJhbGciOiJIUzI1NiIsImtpZCI6ImRlZmF1bHQiLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3NjQ5MzIxNTIsImZpbGVHVUlEIjoibTVrdmRkMExwUGZOeW0zWCIsImlhdCI6MTc2NDkzMTg1MiwiaXNzIjoidXBsb2FkZXJfYWNjZXNzX3Jlc291cmNlIiwicGFhIjoiYWxsOmFsbDoiLCJ1c2VySWQiOi05MzkxNzQ1Njg3fQ.9VBNNyyPnnf--P_xFOydkMmSRFXaMdlsyo8YbNe98YI'
+                          }
+                        ]
+                      },
+                      {
+                        title: 'WallFreeX',
+                        desc: '支持 Conflux 鏈上 USDT、CFX、AxCNH 之間的兌換。',
+                        showDesc:false,
+                        badge: 'WallFreeX 推出積分計畫，用戶透過鏈上交易或提供流動性即可獲得積分，日後可憑積分擁有空投及其他權益。',
+                        explain: '採用 Uniswap V3 機制的 DEX，滑點更低，USDT ↔ AxCNH 兌換更推薦使用。',
+                        btnList: [
+                          {
+                            text: '立即參與',
+                            class: 'primary',
+                            alert: false,
+                            link: 'https://app.wallfreex.com/pool/add_liquidity'
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+            ],
+            'menuList': [
+              {
+                title: '鏈上資產',
+                expand: true,
+                list: [
+                  // {
+                  //   title: 'Binance',
+                  //   link: '#deposit-1'
+                  // },
+                  {
+                    title: 'USDT',
+                    link: '#deposit-1'
+                  },
+                  {
+                    title: 'AxCNH',
+                    link: '#deposit-2'
+                  },
+                  {
+                    title: 'CFX',
+                    link: '#deposit-3'
+                  }
+                ]
+              },
+              {
+                title: '資產兌換',
+                expand: true,
+                list: [
+                  {
+                    title: 'to C',
+                    link: '#withdraw-1'
+                  },
+                  // {
+                  //   title: 'to B',
+                  //   link: '#withdraw-2'
+                  // }
+                ]
+              },
+              {
+                title: '理財',
+                expand: true,
+                list: [
+                  {
+                    title: 'PoS 礦池質押',
+                    link: '#yield-1'
+                  },
+                  {
+                    title: 'RWA Vault',
+                    link: '#yield-2'
+                  }, {
+                    title: '借貸',
+                    link: '#yield-3'
+                  },
+                  {
+                    title: '流動性激勵',
+                    link: '#yield-4'
+                  }
+                ]
+              },
+              {
+                title: '生態工具導航',
+                expand: false,
+                list: [
+                  {
+                    title: '區塊鏈瀏覽器',
+                    link: '#tools-1'
+                  },
+                  {
+                    title: '跨鏈橋',
+                    link: '#tools-2'
+                  },
+                  {
+                    title: '穩定幣',
+                    link: '#tools-3'
+                  }
+                ]
+              },
+            ],
+            'toolList': [
+              {
+                title: '區塊鏈瀏覽器',
+                id: 'tools-1',
+                list: [
+                  {
+                    text: 'Conflux Scan',
+                    class: 'primary',
+                    alert: true,
+                    link: 'https://www.confluxscan.org/'
+                  }
+                ]
+              },
+              {
+                title: '跨鏈橋',
+                id: 'tools-2',
+                list: [
+                  {
+                    text: 'Meson',
+                    class: 'primary',
+                    alert: true,
+                    link: 'https://meson.fi/'
+                  },
+                  {
+                    text: 'KinetFlow',
+                    class: 'primary',
+                    alert: true,
+                    link: 'https://www.kinetflow.io/'
+                  },
+                  {
+                    text: 'Stargate',
+                    class: 'primary',
+                    alert: true,
+                    link: 'https://stargate.finance/?srcChain=conflux&srcToken=0xaf37E8B6C9ED7f6318979f56Fc287d76c30847ff'
+                  }
+                ]
+              },
+              {
+                title: '穩定幣',
+                id: 'tools-3',
+                list: [
+                  {
+                    text: 'USDT0',
+                    class: 'primary',
+                    alert: true,
+                    link: 'https://v2.confluxhub.io/usdt0'
+                  },
+                  {
+                    text: 'AxCNH',
+                    class: 'primary',
+                    alert: true,
+                    link: 'https://v2.confluxhub.io/ax-cnh'
+                  }
+                ]
+              }
+            ]
+          }
+        };
+        const contentList = ref(configInfo[currentLang.value].contentList);
+        const toolsList = ref(configInfo[currentLang.value].toolList);
+        const menuList = ref(configInfo[currentLang.value].menuList);
+        let currentConfig = ref(configInfo[currentLang.value]);//configInfo[currentLang.value];
+        const toggleLangMenu = () => {
+          showLangMenu.value = !showLangMenu.value;
+
+        };
+
+        const changeLang = (lang) => {
+          currentLang.value = lang;
+          localStorage.setItem('lang', lang);
+          document.documentElement.lang = lang;
+          showLangMenu.value = false;
+          currentConfig.value = configInfo[currentLang.value];
+          document.title = currentConfig.value.heroTitle;
+          contentList.value = currentConfig.value.contentList;
+          menuList.value = currentConfig.value.menuList;
+          toolsList.value = currentConfig.value.toolList;
+        };
+        //展开菜单
+        const expandMenu = (item) => {
+          item.expand = !item.expand;
+        }
+        //显示菜单
+        const toggleMenu = () => {
+          showMenu.value = !showMenu.value;
+        }
+
+        // Close menu when clicking a link
+        const handleLinkClick = (link) => {
+          currentLink.value = link;
+          showMenu.value = false;
+        };
+
+        const handleScroll = () => {
+          const offset = 200; // Header height + buffer
+          let activeId = '';
+
+          // Collect all target IDs from the menu
+          const links = [];
+          menuList.value.forEach(group => {
+            if (group.list) {
+              group.list.forEach(item => {
+                if (item.link.startsWith('#')) {
+                  links.push(item.link);
+                }
+              });
+            }
+          });
+
+          // Find the active link (last one that has passed the threshold)
+          for (const link of links) {
+            const id = link.substring(1);
+            const el = document.getElementById(id);
+            if (el) {
+              const rect = el.getBoundingClientRect();
+              if (rect.top <= offset) {
+                activeId = link;
+              }
+            }
+          }
+
+          if (activeId && activeId !== currentLink.value) {
+            currentLink.value = activeId;
+          }
+        };
+
+        const showRiskModal = ref(false);
+        const pendingUrl = ref('');
+
+        const handleOutboundLink = (action) => {
+          if (!action.link) return;
+          // Check if it is an external link (starts with http)
+          if (action.alert) {
+            pendingUrl.value = action.link;
+            showRiskModal.value = true;
+          } else {
+            // Internal anchor link, navigate directly
+            window.open(action.link);
+          }
+        };
+
+        const closeRiskModal = () => {
+          showRiskModal.value = false;
+          pendingUrl.value = '';
+        };
+
+        const confirmNavigation = () => {
+          if (pendingUrl.value) {
+            window.open(pendingUrl.value, '_blank');
+            closeRiskModal();
+          }
+        };
+
+        const toggleNav = () => {
+          isNavCollapsed.value = !isNavCollapsed.value;
+        };
+
+        onMounted(() => {
+          document.title = currentConfig.value.heroTitle;
+          document.documentElement.lang = currentLang.value;
+          document.addEventListener('click', () => {
+            showLangMenu.value = false;
+          });
+          window.addEventListener('scroll', handleScroll);
+          let lastWidth = window.innerWidth;
+          //监听屏幕尺寸变化时重新加载页面
+          window.addEventListener('resize', () => {
+            // 仅在宽度变化时刷新，避免移动端滚动导致死循环
+            if (window.innerWidth !== lastWidth) {
+              location.reload();
+            }
+          });
+        });
+
+        onUnmounted(() => {
+          window.removeEventListener('scroll', handleScroll);
+        });
+
+        return {
+          currentLang,
+          langLabels,
+          showLangMenu,
+          currentConfig,
+          toggleLangMenu,
+          changeLang,
+          currentLink,
+          showMenu,
+          activeTab,
+          contentList,
+          menuList,
+          toolsList,
+          expandMenu,
+          toggleMenu,
+          handleLinkClick,
+          showRiskModal,
+          handleOutboundLink,
+          closeRiskModal,
+          confirmNavigation,
+          isNavCollapsed,
+          toggleNav
+        }
+      }
+    });
+    app.mount('#app');
+  </script>
+
+</body>
+
+</html>
